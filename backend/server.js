@@ -9,10 +9,8 @@ const {app,server,io}=require('./socket/socket.js')
 const {v2:cloudinary} = require('cloudinary')
 const cors = require('cors')
 const path = require('path');
-//const __dirname = path.resolve();
 
-const dotenv = require('dotenv');
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 //dotenv.config()
 mongoose.connect(process.env.DATABASE_CONNECTION,{
   useNewUrlParser:true}).
@@ -26,7 +24,7 @@ mongoose.connect(process.env.DATABASE_CONNECTION,{
 const port = 3000;
 
 app.use(cors({
-  origin:'http://localhost:5173',
+  origin:'http://localhost:3000',
   credentials:true
 }));
 
@@ -47,9 +45,9 @@ app.use('',postRoutes);
 app.use('',replyRoutes);
 app.use('',messageRoutes);
 
-app.use(express.static(path.join(__dirname,'/frontend/dist'))); // serves html ,css js files
+app.use(express.static(path.join(__dirname,'../frontend/dist'))); // serves html ,css js files
 app.get('*',(req,res,)=>{
-  res.sendFile(path.join(__dirname,"frontend","dist","index.html"))
+  res.sendFile(path.join(__dirname,'../frontend','dist','index.html'))
 })
 
 server.listen(port,()=>{
