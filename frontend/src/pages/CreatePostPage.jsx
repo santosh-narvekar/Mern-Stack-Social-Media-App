@@ -46,7 +46,7 @@ const CreatePostPage = () => {
     };
   },[])
   return (
-        <section className="md:ml-20 ml-8">
+        <section className="sm:ml-20 ml-2">
           <div className="flex gap-28">
 
    <input type='file' name="resource"

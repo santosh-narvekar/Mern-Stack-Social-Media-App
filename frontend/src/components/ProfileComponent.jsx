@@ -16,7 +16,7 @@ const ProfileComponent = ({photo,username,posts,followers,following,bio,_id}) =>
   }
 
   return (
-     <section className="mt-8 h-full w-full   ">
+     <section className="mt-8 h-full w-full">
         <div className="flex md:gap-8 gap-4 xl:ml-20  ml-2 mb-8  md:items-center  ">
           {
             !photo?
@@ -127,25 +127,23 @@ const ProfileComponent = ({photo,username,posts,followers,following,bio,_id}) =>
       
       <Link to={'/createNewPost'}>
       <button  className='btn btn-neutral py-2 px-4 mb-5'
-      //onClick={() => document.getElementById('my_modal_1').showModal()}
       >
         <FaPlus></FaPlus>
         </button>
         </Link>
       
-{
-       //id = {"my_modal_1"}
-       //LoadingPosts = {LoadingPosts}
-       //_id={_id}
-}        
    </div>
   :posts?.length==0?
-  <div className="flex w-96  md:justify-center ml-4   items-center  md:mt-20 mt-12">
+  <div className="flex w-96  
+  
+  md:justify-center ml-4   items-center  md:mt-20 mt-12">
    <p className=" font-bold ">
    NO POSTS FROM THIS USER YET!
   </p>
   </div>
-  :<div className="grid  md:grid-cols-2 grid-cols-3  gap-0 ml-8 h-full  md:w-full w-80 lg:ml-0 md:ml-2 mb-8 ">
+  :<div className="grid  sm:grid-cols-2  grid-cols-3  gap-0 h-full 
+    mx-4
+    lg:ml-0 md:ml-2 mb-8 ">
      {
       posts?.map((post)=>{
          return <UserPost key={post._id}

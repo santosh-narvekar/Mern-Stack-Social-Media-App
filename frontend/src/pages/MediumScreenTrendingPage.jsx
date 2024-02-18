@@ -11,8 +11,8 @@ const MediumSScreenTrendingPage = () => {
   },[])
 
   return (
-    <section className='w-80 h-3/4  border-4 fixed left-8 md:left-80 md:h-2/4  top-20 visible overflow-hidden overflow-y-scroll lg:h-4/5 md:ml-0 ml-6 2xl:invisible'>
-      <p className='text-2xl font-bold mb-4 mt-2 ml-4 '>Top  Trending</p>
+    <section className='w-80 h-3/4  border-4 fixed left-8 md:left-80 md:h-2/4  top-20 visible overflow-hidden overflow-y-scroll lg:h-4/5 md:ml-0 ml-2 xl:invisible'>
+      <p className='text-2xl font-bold mb-4 mt-2 ml-4 z-10'>Trending#</p>
       <hr/>
       {
         trendingTopicsLoad?<span className='loading loading-ring'></span>:

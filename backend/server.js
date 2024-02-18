@@ -6,7 +6,8 @@ const replyRoutes = require('./routes/replyRoutes.js');
 const messageRoutes = require('./routes/messageRoutes.js');
 const cookieparser=require('cookie-parser')
 const {app,server,io}=require('./socket/socket.js')
-const {v2:cloudinary} = require('cloudinary')
+const {v2:cloudinary} = require('cloudinary');
+const bcrypt = require("bcryptjs")
 const cors = require('cors')
 const path = require('path');
 
@@ -21,12 +22,12 @@ mongoose.connect(process.env.DATABASE_CONNECTION,{
 })
 
 //const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
-app.use(cors({
-  origin:'http://localhost:3000',
-  credentials:true
-}));
+//app.use(cors({
+ //origin:`http://localhost:5173`,
+  //credentials:true
+//}));
 
 
 cloudinary.config({ 

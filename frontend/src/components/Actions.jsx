@@ -26,8 +26,8 @@ const Actions = ({postData,postId,loggedInUserId}) => {
   const divisionResult = getPostTime(postData?.createdAt);
 
   return (
-    <div className=''>
-      <div className='flex gap-4 ml-4 items-center'> 
+    <div className='mt-2'>
+      <div className=' ml-4  flex items-center gap-4 '> 
 
 <button onClick={handlePostLikes} disabled={likeButtonLoading}>
 
@@ -47,13 +47,10 @@ const Actions = ({postData,postId,loggedInUserId}) => {
 </Link>
 
 <button onClick={copyUrl}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" stroke="currentColor" strokeWidth={30}
-  
-        className="w-8 h-10 hover:cursor-pointer " 
-        fill="transparent"
-        ><path d="M429.6 92.1c4.9-11.9 2.1-25.6-7-34.7s-22.8-11.9-34.7-7l-352 144c-14.2 5.8-22.2 20.8-19.3 35.8s16.1 25.8 31.4 25.8H224V432c0 15.3 10.8 28.4 25.8 31.4s30-5.1 35.8-19.3l144-352z"
-        
-        /></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-8 h-8 hover:cursor-pointer">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+
 </button>
 
 
@@ -62,10 +59,10 @@ const Actions = ({postData,postId,loggedInUserId}) => {
         divisionResult == 0 && `just posted now`
       }
         { 
-         divisionResult < 24 && divisionResult !== 0 &&  `post created ${divisionResult} hours ago` 
+         divisionResult < 24 && divisionResult !== 0 &&  ` ${divisionResult} hours ago` 
         }
         {
-          divisionResult >= 24 && `post created ${curDate.getDate()-postCreatedDate.getDate()} days ago` 
+          divisionResult >= 24 && ` ${curDate.getDate()-postCreatedDate.getDate()} days ago` 
         }
     </div>
       </div>

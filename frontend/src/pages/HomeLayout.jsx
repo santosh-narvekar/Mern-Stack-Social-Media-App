@@ -19,7 +19,16 @@ const HomeLayout = () => {
     <>
     <Navbar/>
     <SideNav />
-    <section className="absolute top-20 lg:left-96 md:left-72 sm:left-72 xs:left-56 xl:ml-8  ml-4   bg-base-100   ">
+    <section className="absolute 
+    lg:left-96
+    sm:left-72
+    top-20
+    sm:w-auto
+    w-screen
+    flex 
+    sm:justify-start
+    justify-center
+     ">
     <Outlet />
     </section>
     </>

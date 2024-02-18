@@ -22,7 +22,7 @@ const PostPage = () => {
   postsLoading?<div className="md:w-96 w-80 flex justify-center items-center">
     <span className="loading loading-ring loading-lg h-20"></span>
     </div>
-    :'_id' in postData && <div className="ml-4">
+    :'_id' in postData && <div className=" w-80 sm:w-96 " >
       <Post postData={postData}   />       
     </div> 
 }

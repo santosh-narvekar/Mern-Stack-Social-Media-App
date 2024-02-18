@@ -57,7 +57,7 @@ const CommentLayout = () => {
 </div>
 :
 <>
-       <div className="flex   gap-2  ">
+       <div className="flex gap-2 ml-4 md:ml-0 ">
         {
           postData && postData?.user?.photo?
           <img src={postData && postData?.user.photo} className="w-14 h-14 rounded-full "/>
@@ -120,7 +120,8 @@ const CommentLayout = () => {
 </div>
 }
 </>
-<div className="flex   md:fixed xl:top-3/4 fixed top-3/4 sm:top-3/4   lg:mt-20 md:mt-20   mt-12  justify-center md:w-96 w-80  md:ml-2 ml-4 ">
+<div className="flex   md:fixed xl:top-3/4 fixed top-3/4 sm:top-3/4   lg:mt-20 md:mt-20
+   mt-12  justify-center md:w-96 w-80  md:ml-2 ml-8 ">
       <input type="text" placeholder="Comment here(Max 200 Characters)" className="input  input-secondary  
       w-full" 
       name='userComment'

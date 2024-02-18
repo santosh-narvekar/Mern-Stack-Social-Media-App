@@ -12,9 +12,10 @@ const TrendingTopics = () => {
   },[])
 
   return (
-    <section className='w-80 h-3/4  border-4 fixed left-2/3 top-20 invisible xl:visible overflow-hidden overflow-y-scroll '>
-      <p className='text-2xl font-bold mb-4 mt-2 ml-4 '>Top  Trending On SAPP</p>
-      <hr />
+    <section className='xl:visible invisible fixed top-20 left-2/3   border-2 border-gray-500 overflow-visible h-5/6 overflow-y-scroll
+    
+    '>
+      <p className='text-2xl font-bold mb-4 mt-2 ml-4 z-10'>Trending#</p>
       {
         trendingTopicsLoad?<span className='loading loading-ring'></span>:
         trendingTopics.length === 0 ?'NO TREND STARTED YET':trendingTopics?.map((topic,i)=>{

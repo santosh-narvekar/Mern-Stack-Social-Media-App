@@ -15,8 +15,8 @@ const FeedPosts = () => {
   },[])
 
   return (
-    <section className="mb-8 ml-4 ">
-      <h1 className=" text-4xl font-bold  mb-4">FEED</h1>
+    <section className="mb-4">
+      <h1 className="sm:text-4xl text-2xl font-bold ml-4  ">FEED</h1>
       <div className="flex gap-28">
       {
         postsLoading || !posts?
@@ -25,20 +25,18 @@ const FeedPosts = () => {
         </div>
 
         :
-    <div  className="flex flex-col ">
+    <div  className="flex  flex-col w-80 sm:w-96 
+     sm:ml-0  ">
       {
        !posts || posts.length==0?<>
-        <p className="text-2xl w-96 flex-wrap mb-4 ">
-         'NO POSTS IN FEED! FOLLOW SOMEONE TO SEE MORE FEED POSTS' 
+        <p className="flex-wrap text-2xl text-wrap ml-4 ">
+          YOUR FEED IS EMPTY! FOLLOW SOMEONE TO SEE FEED POSTS!
         </p>
-        <div className="w-96 mt-2 "> 
-
-      </div>
           </>
           :
           posts.map((post)=>{
-          return <Post key={post._id} postData={post} postId={post._id} />
-        })
+            return <Post key={post._id} postData={post} postId={post._id} />
+          })
       }
     </div>
       }

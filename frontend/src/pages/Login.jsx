@@ -29,8 +29,8 @@ const Login = () => {
   }  
   
   return (
-   <section className="card rounded-lg border-0 shadow-xl bg-base-100 w-96 mx-auto my-10">
-  <Form method="post" className="mx-auto w-80 px-1" id="login-form">
+   <section className="card rounded-lg border-2  shadow-xl bg-base-100   sm:mt-4 mt-8 w-80 sm:w-96 mx-auto my-10">
+  <Form method="post" className="mx-auto sm:w-80 w-72 px-1" id="login-form">
     <h1 className="font-lg italic  font-bold  text-gray-700  text-center my-5 text-5xl">SAPP</h1>
     <h4 className="italic my-3 text-center">Login to see the activity from your friends.</h4>
      <input placeholder="Email"
@@ -59,7 +59,7 @@ const Login = () => {
        }  
      </button>
      </Form>
-    <h4 className="text-center my-5">New Member?<Link to="/" >Sign Up</Link></h4>
+    <h4 className="text-center my-5">New Member?<Link to="/signUp" >Sign Up</Link></h4>
   </section>
 
   )

@@ -33,7 +33,7 @@ const UpdatePassword = () => {
   
 
   return (
-    <div className='my-20 flex flex-col gap-2 w-full'>
+    <div className=' my-12   flex flex-col gap-2 w-full'>
       <div role="alert" className="alert alert-error w-1/2 mx-auto flex justify-center" >
   <span>Note: You will be immediately logged Out after successful password update.</span>
 </div>

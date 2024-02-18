@@ -28,10 +28,11 @@ const TrendingPagePosts = () => {
       :
      <section className="mb-4 ml-4 ">
       <p className="text-2xl font-bold mb-4 text-wrap">
-         TRENDING TOPICS FOR {trendingTopic}
+         #{trendingTopic}
       </p>
       <div className="flex gap-28">
-    <div className="flex flex-col ">
+    <div className="flex  flex-col w-72 sm:w-96
+     sm:ml-0">
       {
         posts && posts?.map((post)=>{   
           return <Post key={post._id} postData={post}  

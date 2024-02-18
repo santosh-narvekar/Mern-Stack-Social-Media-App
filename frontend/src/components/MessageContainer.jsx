@@ -22,7 +22,7 @@ const MessageContainer = () => {
   },[id]);
   
   return (
-    <div className="md:min-w-[450px] flex flex-col overflow-auto ml-6 h-96  md:h-full  md:ml-0">
+    <div className="md:min-w-[450px] flex flex-col overflow-auto sm:ml-6 h-full    md:ml-0 ">
       {
         !id?<NoChatSelected/>:
         <>

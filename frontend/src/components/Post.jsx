@@ -55,21 +55,21 @@ const Post = ({postId,postData,curIndex}) => {
      }, 1000); 
   }
   return (
-     <div className="md:h-72 h-56 xl:w-96 xl:mb-56  mb-56 sm:ml-8 w-80 md:ml-2 lg:ml-0 ml-2">
-      <div className="flex justify-between items-center ">
-        <div className="flex gap-2 items-center">
+    <>
+      <div className="relative max-h-full  max-w-full flex flex-col mb-8 ">
+       <div className="flex items-center justify-between mb-2">
+          <div className="flex flex-row gap-2 items-center">
           {
-          postData?.user?.photo?<img src={postData.user.photo} className="w-12 h-12 rounded-full" alt="userProfilePic"/>
-          :<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-12 h-12"><path fill="#808389" d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/></svg>
+            postData?.user?.photo?<img src={postData.user.photo} className="w-12 h-12 rounded-full" alt="userProfilePic"/>
+            :<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-12 h-12"><path fill="#808389" d="M399 384.2C376.9 345.8 335.4 320 288 320H224c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/></svg>
           }
           <p className="font-bold hover:cursor-pointer">
             <Link to={`/profile/${postData?.user._id}`}>
             {postData.user.username}
             </Link>
           </p>
-          
+            </div>
 
-         </div>
          {
           postData.postedBy === loggedInUserId?<PostActions 
           postsButtonLoading={postsButtonLoading}
@@ -85,25 +85,24 @@ const Post = ({postId,postData,curIndex}) => {
           postId={postId}
           />
   } 
-        
       </div>
-      
+
       <div
       id={`resource${curIndex+1}`} className="relative" 
       onDoubleClick={handleLikeByPost}
       >
       {
         postData.resource.includes('/video/upload')?
-        <video  className="w-96 md:h-72   h-40  mt-2 pb-4  overflow-hidden"
+        <video  className="md:max-w-full max-w-full md:max-h-96  border-2 border-black 	 "
         controls playsInline={true} 
         id={`video-container${curIndex+1}`}
       >
-        <source src={postData.resource} type="video/mp4"/>
+        <source src={postData?.resource} type="video/mp4"/>
         </video>
       
       :<img
       id="resource"
-      src={postData.resource}   className="w-96 md:h-64   h-40 pb-4  pt-2   "/>
+      src={postData.resource}   className="md:max-w-full max-w-full md:max-h-96 border-2 border-black  "/>
       }
         <div
         id={`likeEffect${curIndex+1}`}
@@ -112,23 +111,17 @@ const Post = ({postId,postData,curIndex}) => {
             "><FaHeart fill ={
               postData.likes && postData?.likes.includes(loggedInUserId)?'#ff314a':'#ffffff'}/>
             </div>
-
-        </div>
-
+</div>
 {
 paramPostId?
 <Actions postData={postData} postId={paramPostId} loggedInUserId={loggedInUserId} 
-
 />
 :
 <Actions postData={postData} postId={postId}  loggedInUserId={loggedInUserId}  />
 }
-<div className="flex flex-col w-full border-opacity-50">
-  <div className="grid h-4 card bg-base-200 rounded-box place-items-center"></div>
+{postId && <hr className="bg-black flex items-center"/>}
 </div>
-    
-    </div>
-  
+ </>   
   )
 }
 

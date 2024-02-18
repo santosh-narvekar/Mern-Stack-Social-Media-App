@@ -23,7 +23,7 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
   }
   return (
 <>
-    <div className="flex gap-2  md:w-96  w-96  ">
+    <div className="flex gap-2  md:w-96  w-80 md:ml-0 ml-8  ">
       {
         profilePhoto?
         <img src={profilePhoto}

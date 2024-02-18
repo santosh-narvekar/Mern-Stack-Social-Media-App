@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+
 import { useDispatch, useSelector } from "react-redux"
 import { Form, Link } from "react-router-dom"
-import { toast } from "react-toastify"
 import { createNewUser } from "../../features/userFeatures";
+import { useState } from "react";
 
 const SignUp = () => {
   const {buttonLoading}=useSelector(state=>state.loggedIn);
@@ -21,8 +21,8 @@ const SignUp = () => {
   }
 
   return (
-    <section className="card rounded-lg border-0 shadow-xl bg-base-100 w-96 mx-auto my-10">
-  <Form method="post" className="mx-auto w-80 px-1" id="my-form">
+    <section className="card rounded-lg border-2 shadow-xl bg-base-100 sm:w-96 w-80 mx-auto  mt-8 sm:mt-4 my-10">
+  <Form method="post" className="mx-auto  sm:w-80 w-72  px-1" id="my-form">
     <h1 className="font-lg italic  font-bold  text-gray-700  text-center my-5 text-5xl">SAPP</h1>
     <h4 className="italic my-3 text-center">Sign up to see photos and videos from your friends.</h4>
     <input placeholder="Username" 

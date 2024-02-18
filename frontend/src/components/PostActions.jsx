@@ -27,7 +27,7 @@ const PostActions = ({postsButtonLoading,postId,postData,IdInParams,userId,data,
 }
 
 return (
-    <div className='flex flex-row  gap-2 items-center'>
+    <div className='flex flex-row  gap-2 items-center '>
       {
         !IdInParams?
         <Link to={`/profile/${userId}/post/${postId}`}>

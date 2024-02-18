@@ -16,7 +16,7 @@ const ExplorePosts = () => {
   },[])
 
   return (
-    <>
+    <section className="absolute mb-4">
     {
 //      trendingTopic?<Outlet/>:
       postsLoading || !posts?
@@ -25,22 +25,21 @@ const ExplorePosts = () => {
       </div>
     
       :
-     <section className="mb-4 ml-4 ">
-      <div className="flex gap-28">
-    <div className="flex flex-col ">
+    <div className="flex  flex-col w-72 sm:w-96
+     sm:ml-0">
       {
         posts && posts?.map((post,i)=>{   
           return <Post key={post._id} postData={post}  
           postId={post._id} curIndex={i} 
-        />})
-      }
+          />})
+        }
     </div>
-          </div>
-
-    </section>
       }
-      <TrendingTopics />
-      </>
+  {
+
+     <TrendingTopics /> 
+  } 
+   </section>   
   )
 }
 

@@ -41,9 +41,9 @@ const UpdateProfile = () => {
   }
 
   return (
-    <div className="xl:w-96 w-72" >
-      <Form className=" rounded  w-6/3  py-12  pt-6    w-96 border-4">
-          <div  className="mb-6 flex bg-base-100 justify-center items-center align-top gap-4  my-2">
+    <div className="xl:w-96 " >
+      <Form className="rounded  w-96    pt-6 sm:border-4 ">
+          <div  className="mb-6 flex bg-base-100 justify-center items-center align-top gap-4  my-2 mx-2 ">
      {
       data.photo.startsWith('data:image/jpeg') || data.photo.startsWith('data:image/png')  || data.photo
       ?

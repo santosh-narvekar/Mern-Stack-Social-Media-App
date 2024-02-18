@@ -10,13 +10,12 @@ const SearchInput = ({handleInputChange}) => {
 
   return (
     <form className='flex items-center gap-2'
-     //onSubmit={handleSubmit}
       >
        <input
         type="text" placeholder='find your friends to chat' 
         value={search}
         onChange={(e)=>handleInputChange(e,search,setSearch)}
-        className='input input-bordered rounded-full'
+        className='input input-bordered rounded-full w-full'
        />
        {/*<button 
        type='submit'

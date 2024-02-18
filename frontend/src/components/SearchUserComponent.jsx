@@ -26,7 +26,7 @@ const SearchUserComponent = ({userProfile,username,_id,followers}) => {
   }
   return (
     <Link to={`/profile/${_id}`}>
-    <div className='flex  flex-row  items-center justify-between w-96 mb-2'>
+    <div className='flex  flex-row  items-center justify-between w-80 md:w-96 mb-2 '>
       <div className='flex flex-row items-center hover:bg-base-200 active:bg-base-300 px-2  mt-2 mb-2 w-96'>
       <div className='w-20'>
     {
@@ -41,24 +41,24 @@ const SearchUserComponent = ({userProfile,username,_id,followers}) => {
       </div>
     {
      postId   && loggedInUserId === _id?
-    <button className='w-28 h-10 justify-end bg-base-300 rounded-lg'
+    <button className='w-28 h-10 justify-end bg-base-300 rounded-lg mx-4 px-4'
     onClick={handleLike}
     >
-      <p className=' font-bold'>
+      <p className=' font-bold  '>
         Remove
       </p>
       </button>
       :loggedInUserId === _id?<></>:
-    <button className='w-28 h-10 bg-base-300 rounded-lg px-4 '
+    <button className='w-28 h-10 bg-base-300 rounded-lg mx-4 px-4'
     onClick={handleFollowers}
     >
-      <p className=' font-bold'>
+      <p className='font-bold'>
       {loggedInUser?.following?.includes(_id)?'following':'follow'}
       </p>
       </button>
     }
     </div>
-    <hr></hr>
+    <hr className='w-full'/>
     </Link>
   )
 }

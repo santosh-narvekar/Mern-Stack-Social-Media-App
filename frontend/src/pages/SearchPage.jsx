@@ -34,17 +34,18 @@ const SearchPage = () => {
   return (
     <section className='flex flex-col h-4/5'>
       <div className='flex gap-28'>
-
-    <div className=" md:justify-center
-    md:w-96 w-72  justify-start items-center  
+    <div className="md:justify-center
+    md:w-96 w-80 justify-start items-center  
     ">
      <input type="search" 
      value={userSearch}
      onChange = {handleSearch}
      placeholder="Search" 
-     className="input input-bordered md:w-96 w-80 md:ml-12 ml-4  max-w-full"
+     className="input input-bordered md:w-96 w-80 md:ml-12 ml-0 max-w-full"
     />
-     <div className="overflow overflow-hidden overflow-y-scroll md:ml-12 ml-8 md:w-96 max-w-full md:h-96 h-80 flex flex-col mt-8 ">
+     <div className="overflow overflow-visible overflow-y-scroll md:ml-12 ml-2 md:w-96 max-w-full md:h-96 h-80 flex flex-col mt-8 
+     w-96
+     ">
       {
        filteredUsers?.map((user)=>{
           return <SearchUserComponent key={user._id} _id={user._id} userProfile={user.photo} username={user.username} />
