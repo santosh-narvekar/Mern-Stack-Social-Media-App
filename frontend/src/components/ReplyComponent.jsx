@@ -32,20 +32,14 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
     const deleteEl =  document.getElementById(`deletePostComment${curIndex+1}`);
     const res = window.confirm('do you want to delete this comment?');
     if(res){
-      deleteEl.disabled = true 
-      deleteEl.classList.add('loading');
-      deleteEl.classList.add('loading-ring');
+      deleteEl.disabled = true; 
       const response = await  dispatch(deletePostComment(replyId));
       if(response.type=='/deletePostComment/fulfilled'){
       deleteEl.disabled = false 
-      deleteEl.classList.remove('loading');
-      deleteEl.classList.remove('loading-ring');
       }
       
       if(response.type=='/deletePostComment/rejected'){
       deleteEl.disabled = false 
-      deleteEl.classList.remove('loading');
-      deleteEl.classList.remove('loading-ring');
       }
     }
   }
