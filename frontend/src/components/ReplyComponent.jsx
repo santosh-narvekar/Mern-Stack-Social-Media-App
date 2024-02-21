@@ -12,6 +12,7 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
   const handleLike=(e)=>{
     e.preventDefault();
     let commentId=replyId
+    
     dispatch(likePostComment(commentId));
   }
 
@@ -48,7 +49,8 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
       <div className="flex flex-col  items-center gap-2">
       <div className="flex   items-center">
 <button onClick={handleLike}
-disabled={likeButtonLoading}
+id={`postCommentLike${curIndex+1}`}
+//disabled={likeButtonLoading}
 >
 {
   <svg xmlns="http://www.w3.org/2000/svg" fill={userComment?.likes?.includes(_id)?'red':'transparent'} viewBox="0 0 24 24" strokeWidth={1.0} stroke="currentColor" className="w-6 h-6">
@@ -62,12 +64,9 @@ disabled={likeButtonLoading}
   </p>
     </div>
         <>
-        {
-        deleteButtonLoading && userId==_id?<span className = 'loading loading-ring'></span>:
-        <button onClick={handleDelete} disabled={deleteButtonLoading}>
-         {userId==_id?<FaRegTrashCan className="" />:<></>}
+        <button onClick={handleDelete} disabled={deleteButtonLoading} id={`deletePostComment${curIndex+1}`}>
+         {userId==_id?<FaRegTrashCan className=""/>:<></>}
          </button>
-        }
         </>
           </div>
     </div>
