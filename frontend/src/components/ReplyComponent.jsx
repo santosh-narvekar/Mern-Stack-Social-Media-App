@@ -6,7 +6,7 @@ import { BsArrowBarLeft } from "react-icons/bs";
 
 const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,replyId,curIndex,userComment}) => {
   const {_id}=useSelector(state=>state.loggedIn.loggedInUser);
-  const {likeButtonLoading}=useSelector(state=>state.post);
+  const {likeButtonLoading,deleteButtonLoading}=useSelector(state=>state.post);
   const dispatch = useDispatch();
   
   const handleLike=(e)=>{
@@ -61,7 +61,7 @@ disabled={likeButtonLoading}
   {userComment?.likes?.length} 
   </p>
     </div>
-      <button onClick={handleDelete}>
+      <button onClick={handleDelete} disabled={deleteButtonLoading}>
       {userId==_id?<FaRegTrashCan className="" />:<></>}
       </button>
       </div>
