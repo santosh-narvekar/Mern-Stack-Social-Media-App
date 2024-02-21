@@ -25,7 +25,7 @@ const FeedPosts = () => {
         </div>
 
         :
-    <div  className="flex  flex-col w-80 sm:w-96 
+    <div  className="flex  flex-col w-96 sm:w-96 
      sm:ml-0  ">
       {
        !posts || posts.length==0?<>
