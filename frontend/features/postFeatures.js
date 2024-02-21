@@ -64,7 +64,7 @@ export const updatePost = createAsyncThunk('/updatePost',async(postInfo,thunkAPI
 
 export const deletePost  = createAsyncThunk('/deletePost',async(postId,thunkAPI)=>{
   try{
-    if(postId) return;
+    if(!postId) return;
     const res=await postsFetch.delete(`/posts/deletePost/${postId}`);
     return res;
   }catch(err){
@@ -103,8 +103,8 @@ export const getAllPostComments = createAsyncThunk('/getAllReplies',async(postId
 })
 
 export const deletePostComment = createAsyncThunk('/deletePostComment',async(commentId,thunkAPI)=>{
-  try{
   if(!commentId) return
+  try{
   const commentsData = await postsFetch.delete(`/replies/deletePostComment/${commentId}`);
   return commentsData;
   }catch(err){
@@ -115,8 +115,8 @@ export const deletePostComment = createAsyncThunk('/deletePostComment',async(com
 
 
 export const likePostComment = createAsyncThunk('/likePostComment',async(commentId,thunkAPI)=>{
-  try{
     if(!commentId) return
+  try{
     const comment = await postsFetch.post(`/replies/likePostReplies/${commentId}`);
     return comment
   }catch(err){
