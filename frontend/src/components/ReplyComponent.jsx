@@ -30,8 +30,8 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
   const handleDelete =async (e)=>{
     e.preventDefault();
     const res = window.confirm('do you want to delete this comment?');
-    if(res){
     const deleteEl =  document.getElementById(`deletePostComment${curIndex+1}`);
+    if(res){
       deleteEl.disabled = true; 
       const response = await  dispatch(deletePostComment(replyId));
       if(response.type=='/deletePostComment/fulfilled'){
