@@ -17,7 +17,7 @@ const handleUserFollowers = async(e) => {
         followButton.forEach(fb=>fb.disabled = false)
       }
       if(res.type==`/followUnfollowUser/rejected`){
-        followButton.forEach(fb=>fb.disabled=false})      
+        followButton.forEach(fb=>fb.disabled=false)      
       }
     }catch(err){
       //
