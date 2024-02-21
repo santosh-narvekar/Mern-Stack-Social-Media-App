@@ -171,6 +171,7 @@ const state={
   feedPosts:[],
   suggestedPosts:[],
   postsButtonLoading:false,
+  deleteButtonLoading:false,
   likeButtonLoading:false,
   postsLoading:false,
   singlePostLoad:false,
@@ -284,11 +285,14 @@ const postSlice = createSlice({
       state.commentLoading=false;
     }).addCase(deletePostComment.pending,(state,action)=>{
       //state.commentLoading = true
+      state.deleteButtonLoading=true
     }).addCase(deletePostComment.fulfilled,(state,action)=>{
       //state.commentLoading = false;
+      state.deleteButtonLoading = false
       state.postComments=action.payload.data.replies;
     }).addCase(deletePostComment.rejected,(state,action)=>{
       //state.commentLoading = false
+      state.deleteButtonLoading=false
       toast.error('something went wrong!')
     }).addCase(likePostComment.pending,(state,action)=>{
       state.likeButtonLoading=true;
