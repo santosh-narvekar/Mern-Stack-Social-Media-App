@@ -7,30 +7,17 @@ const UserActions = ({loggedInUserId,buttonLoading,following,_id,curIndex}) => {
  
 const handleUserFollowers = async(e) => {
     let followButton = document.querySelectorAll(`#follow-btn${_id}`);  
-    followButton.forEach(fb=>{
-     fb.disabled=true;
-     fb.classList.add('loading');
-     fb.classList.add('loading-ring');
-    });
+    followButton.forEach(fb=>fb.disabled=true);
  
-    setDisable(true);
     e.preventDefault();
     const userId = _id;
     const res  = await dispatch(followUnfollowUser(userId));   
     try{
       if(res.type==`/followUnfollowUser/fulfilled`){
-        followButton.forEach(fb=>{
-          fb.disabled=false;
-          fb.classList.remove('loading');
-          fb.classList.remove('loading-ring');
-        })
+        followButton.forEach(fb=>fb.disabled = false)
       }
       if(res.type==`/followUnfollowUser/rejected`){
-        followButton.forEach(fb=>{
-          fb.disabled=false;
-          fb.classList.remove('loading');
-          fb.classList.remove('loading-ring');
-        })      
+        followButton.forEach(fb=>fb.disabled=false})      
       }
     }catch(err){
       //
