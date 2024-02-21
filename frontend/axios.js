@@ -9,9 +9,9 @@ export const usersFetch = axios.create({
 })
 
 export const postsFetch = axios.create({
-  baseURL:"http://localhost:3000",
+  baseURL:"https://sapp-social-media-app.onrender.com/",
   headers:{
-    "Content-Type":"https://sapp-social-media-app.onrender.com/",
+    "Content-Type":"application/json",
   },
   withCredentials:true
 });
