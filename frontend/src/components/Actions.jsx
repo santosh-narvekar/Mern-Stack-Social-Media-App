@@ -8,21 +8,17 @@ import { useState } from 'react';
 const Actions = ({postData,postId,loggedInUserId,curIndex}) => {
   const dispatch = useDispatch();
   const {likeButtonLoading}=useSelector(state=>state.post);
-  const [state,setState]=useState(false);
   
   const handlePostLikes=async()=>{
      const el = document.getElementById(`likeButton${curIndex+1}`);
      el.disabled = {likeButtonLoading}
-     setState(el.disabled)
      try{
       const res = await dispatch(likeUnlikePost(postId));
       if(res.type==='/likeUnlikePost/fulfilled'){
-        setState(false);
-        el.disabled = state
+        el.disabled = false
       }
-      if(res.type==='/likeUnlikePost/rejected'){
-        setState(false);
-        el.disabled= state
+      if(res.type==='/likeUnlikePost/rejected'){     
+        el.disabled= false
       }
      }catch(err){
       //
@@ -47,7 +43,6 @@ const Actions = ({postData,postId,loggedInUserId,curIndex}) => {
       <div className='w-full pt-2  flex items-center  justify-between   border-white  '> 
       <button onClick={handlePostLikes}  id={`likeButton${curIndex+1}`}>
         {
-          //state?<span className='loading loading-spinner'></span>:
   <svg xmlns="http://www.w3.org/2000/svg" 
   fill={postData?.likes.includes(loggedInUserId)?'red':'transparent'} viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"
  
