@@ -25,7 +25,7 @@ const ExplorePosts = () => {
       </div>
     
       :
-    <div className="flex  flex-col w-screen sm:w-96 ml-0
+    <div className="flex  flex-col w-96 sm:w-96 ml-0
      sm:ml-0 mb-8">
       {
         posts && posts?.map((post,i)=>{   
