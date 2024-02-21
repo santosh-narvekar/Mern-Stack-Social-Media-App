@@ -9,18 +9,44 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
   const {likeButtonLoading,deleteButtonLoading}=useSelector(state=>state.post);
   const dispatch = useDispatch();
   
-  const handleLike=(e)=>{
+  const handleLike=async(e)=>{
     e.preventDefault();
     let commentId=replyId
-    
-    dispatch(likePostComment(commentId));
+    const el = document.getElementById(`postCommentLike${curIndex+1}`);
+    el.disabled = true;
+    try{ 
+    const res=await dispatch(likePostComment(commentId));
+    if(res.type===`/likePostComment/fulfilled`){
+      el.disabled=false
+    }
+    if(res.type===`/likePostComment/rejected`){
+      el.disabled=false
+    }
+    }catch(err){
+      //
+    }
   }
-
-  const handleDelete = (e)=>{
+  
+  const handleDelete =async (e)=>{
     e.preventDefault();
-    const res= window.confirm('do you want to delete this comment?');
+    const deleteEl =  document.getElementById(`deletePostComment${curIndex+1}`);
+    const res = window.confirm('do you want to delete this comment?');
     if(res){
-      dispatch(deletePostComment(replyId));  
+      deleteEl.disabled = true 
+      deleteEl.classList.add('loading');
+      deleteEl.classList.add('loading-ring');
+      const response = await  dispatch(deletePostComment(replyId));
+      if(response.type=='/deletePostComment/fulfilled'){
+      deleteEl.disabled = false 
+      deleteEl.classList.remove('loading');
+      deleteEl.classList.remove('loading-ring');
+      }
+      
+      if(response.type=='/deletePostComment/rejected'){
+      deleteEl.disabled = false 
+      deleteEl.classList.remove('loading');
+      deleteEl.classList.remove('loading-ring');
+      }
     }
   }
   return (
@@ -50,7 +76,6 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
       <div className="flex   items-center">
 <button onClick={handleLike}
 id={`postCommentLike${curIndex+1}`}
-//disabled={likeButtonLoading}
 >
 {
   <svg xmlns="http://www.w3.org/2000/svg" fill={userComment?.likes?.includes(_id)?'red':'transparent'} viewBox="0 0 24 24" strokeWidth={1.0} stroke="currentColor" className="w-6 h-6">
@@ -64,7 +89,7 @@ id={`postCommentLike${curIndex+1}`}
   </p>
     </div>
         <>
-        <button onClick={handleDelete} disabled={deleteButtonLoading} id={`deletePostComment${curIndex+1}`}>
+        <button onClick={handleDelete}  id={`deletePostComment${curIndex+1}`}>
          {userId==_id?<FaRegTrashCan className=""/>:<></>}
          </button>
         </>
