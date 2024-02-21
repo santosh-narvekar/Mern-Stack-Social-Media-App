@@ -4,24 +4,33 @@ import { useState } from "react";
 
 const UserActions = ({loggedInUserId,buttonLoading,following,_id,curIndex}) => {
  const dispatch = useDispatch();
- const [disable,setDisable]=useState(false);
-
+ 
 const handleUserFollowers = async(e) => {
     let followButton = document.querySelectorAll(`#follow-btn${_id}`);  
-    console.log(followButton)
-    followButton.forEach(fb=>fb.disabled={buttonLoading});
+    followButton.forEach(fb=>{
+     fb.disabled=true;
+     fb.classList.add('loading');
+     fb.classList.add('loading-ring');
+    });
+ 
     setDisable(true);
     e.preventDefault();
     const userId = _id;
     const res  = await dispatch(followUnfollowUser(userId));   
     try{
       if(res.type==`/followUnfollowUser/fulfilled`){
-        setDisable(false)
-        followButton.forEach(fb=>fb.disabled=disable)
+        followButton.forEach(fb=>{
+          fb.disabled=false;
+          fb.classList.remove('loading');
+          fb.classList.remove('loading-ring');
+        })
       }
       if(res.type==`/followUnfollowUser/rejected`){
-        setDisable(false);
-        followButton.forEach(fb=>fb.disabled=disable)      
+        followButton.forEach(fb=>{
+          fb.disabled=false;
+          fb.classList.remove('loading');
+          fb.classList.remove('loading-ring');
+        })      
       }
     }catch(err){
       //
@@ -30,23 +39,16 @@ const handleUserFollowers = async(e) => {
  
   return (
       <div>
-      {
 <button className="w-28 h-10 justify-end bg-base-300 rounded-lg px-2 "
   onClick={handleUserFollowers}
- //disabled={buttonLoading}
   id={`follow-btn${_id}`}
   >
-      {
-        disable?<span className="loading loading-ring"></span>:
-           <p className="font-bold">  
+          <p className="font-bold">  
             { 
              following?.includes(_id)?'following':'follow'
             }
            </p> 
-      }
-                      </button>
-
-          }
+      </button>
 
     </div>
   )
