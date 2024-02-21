@@ -13,7 +13,7 @@ export const SocketContextProvider = ({children})=>{
 
   useEffect(()=>{
     if(_id){
-      const socket = io("http://localhost:3000",{
+      const socket = io("https://sapp-social-media-app.onrender.com/",{
         query:{
           userId:_id
         }
