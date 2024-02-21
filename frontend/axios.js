@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const usersFetch = axios.create({
-  baseURL:"http://localhost:3000",
+  baseURL:"https://sapp-social-media-app.onrender.com/",
   headers:{
     "Content-Type":"application/json",
   },
@@ -11,7 +11,7 @@ export const usersFetch = axios.create({
 export const postsFetch = axios.create({
   baseURL:"http://localhost:3000",
   headers:{
-    "Content-Type":"application/json",
+    "Content-Type":"https://sapp-social-media-app.onrender.com/",
   },
   withCredentials:true
 });
