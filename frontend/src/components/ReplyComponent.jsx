@@ -61,10 +61,14 @@ disabled={likeButtonLoading}
   {userComment?.likes?.length} 
   </p>
     </div>
-      <button onClick={handleDelete} disabled={deleteButtonLoading}>
-      {(userId==_id && deleteButtonLoading)?<FaRegTrashCan className="" />:<></>}
-      </button>
-      </div>
+        <>
+        {
+        deleteButtonLoading?<span className = 'loading loading-ring'}></span>:
+        <button onClick={handleDelete} disabled={deleteButtonLoading}>
+         {userId==_id?<FaRegTrashCan className="" />:<></>}
+         </button>
+        </>
+          </div>
     </div>
    </>
   )
