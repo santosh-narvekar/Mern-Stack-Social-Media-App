@@ -5,8 +5,9 @@ import { CommentOnPost, getAllPostComments, getOnePost } from "../../features/po
 import ReplyComponent from "../components/ReplyComponent";
 import { Link } from "react-router-dom";
 import { setShowPicker } from "../../features/userFeatures";
-import { BsEmojiSmile } from "react-icons/bs";
+import { BsEmojiSmile, BsSend } from "react-icons/bs";
 import Picker  from "emoji-picker-react";
+import TrendingTopics from "./TrendingTopics";
 
 const CommentLayout = () => {
   const params=useParams();
@@ -49,7 +50,8 @@ const CommentLayout = () => {
   }
 
   return (
-    <section className="">
+    <section className="w-full sm:ml-8 ml-0">
+
 {
  !postData?
 <div className="md:w-96 w-80 flex items-center justify-center">
@@ -57,7 +59,7 @@ const CommentLayout = () => {
 </div>
 :
 <>
-       <div className="flex gap-2 ml-4 md:ml-0 ">
+       <div className="flex gap-2 ml-4 md:ml-0 mt-2 mb-2">
         {
           postData && postData?.user?.photo?
           <img src={postData && postData?.user.photo} className="w-14 h-14 rounded-full "/>
@@ -66,7 +68,7 @@ const CommentLayout = () => {
 
         }
 
-      <div className="flex flex-wrap md:w-80 w-72 overflow-hidden  ">
+      <div className="flex flex-wrap md:w-80 w-80 overflow-hidden  ">
         <p className=" font-bold hover:cursor-pointer">
           <Link to={`/profile/${postData?.user?._id}`}>
           {postData && postData?.user?.username}
@@ -77,8 +79,7 @@ const CommentLayout = () => {
         </p>
       </div>
       </div>
-         <hr className="mt-2 bg-blue-600 w-96"/>
-
+  <div className="divider divider-primary w-full mt-2 mb-2">Post Comments</div>
 
 <>
 {
@@ -88,17 +89,17 @@ const CommentLayout = () => {
   </div>
   :
 <div className="bg-base-100 xl:h-80 h-4/5 w-full   mt-2">
-      <div className="grid grid-cols-2 w-32  mt-8">
+      <div className="grid grid-cols-2 w-32  mt-2">
         {
           
           postComments?.length === 0?
-          <div className="flex flex-row w-96">
+          <div className="flex flex-row w-full ml-8">
                 <p className="flex justify-center  font-bold ">
                   NO COMMENTS YET ON THIS POST
                 </p>  
               </div>
                   :
-                  <section className="flex flex-col h-full">
+                  <section className="flex flex-col ">
                   {
                     postComments?.map((userComment,i)=>{
                       return <ReplyComponent key={userComment._id}
@@ -121,30 +122,33 @@ const CommentLayout = () => {
 }
 </>
 <div className="flex   md:fixed xl:top-3/4 fixed top-3/4 sm:top-3/4   lg:mt-20 md:mt-20
-   mt-12  justify-center md:w-96 w-80  md:ml-2 ml-8 ">
+   mt-12  md:w-1/3 w-80 md:ml-0 ml-8 pe-2 ps-2   ">
       <input type="text" placeholder="Comment here(Max 200 Characters)" className="input  input-secondary  
       w-full" 
       name='userComment'
       onChange = {handlePostComment}
       value={comment.userComment}
       />
-      <button className="bg-base-300  w-12 flex items-center justify-center"
+      <button className="bg-base-300  w-10 flex items-center justify-center"
       onClick={handlePickerOpen}
       >
         <BsEmojiSmile/>
       </button>
       {
-          showPicker  && <div ref={messageRef} className="z-10 mt-2 fixed top-48 " >
+          showPicker  && <div ref={messageRef} className="z-10 mt-2 fixed top-48 pt-2" >
             <Picker onEmojiClick={onEmojiClickForMessage}/>
            </div>
         }
-      <button className="text-white pl-2 bg-blue-500 pr-2 w-12"
+      <button className="text-white pl-2 bg-blue-500 pr-2 w-10 pt-2 pb-2"
       onClick={handleComment}
       disabled={commentLoading || comment.userComment==''}
-      > Post</button>
+      > 
+      <BsSend/>
+      </button>
       </div>
 </>
-}      
+}  
+<TrendingTopics/>    
     </section>
   )
 }

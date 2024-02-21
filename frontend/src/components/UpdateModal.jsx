@@ -2,7 +2,7 @@ import { FaImage } from "react-icons/fa6"
 import { handleChangeForPosts } from "../../utils/handleChangeForPosts";
 import { useRef,useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updatePost } from "../../features/postFeatures";
+import { getTrendingTopics, updatePost } from "../../features/postFeatures";
 import { BsEmojiSmile } from "react-icons/bs"
 import { setShowPicker } from "../../features/userFeatures";
 import Picker from "emoji-picker-react";
@@ -38,8 +38,15 @@ const UpdateModal = ({id,data,setData}) => {
 
 
 
-  const handlePostUpdate = () => {
-    dispatch(updatePost({postId,data}));
+  const handlePostUpdate = async() => {
+    try{
+      const res = await dispatch(updatePost({postId,data}));
+      if(res.type==='/updatePost/fulfilled'){
+        dispatch(getTrendingTopics());
+      }
+    }catch(err){
+      //
+    }
   }
   
   const {postsButtonLoading}=useSelector(state=>state.post)

@@ -12,7 +12,6 @@ const cors = require('cors')
 const path = require('path');
 
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-//dotenv.config()
 mongoose.connect(process.env.DATABASE_CONNECTION,{
   useNewUrlParser:true}).
   then((conn)=>{
@@ -24,10 +23,10 @@ mongoose.connect(process.env.DATABASE_CONNECTION,{
 //const app = express();
 const port = process.env.PORT;
 
-//app.use(cors({
- //origin:`http://localhost:5173`,
-  //credentials:true
-//}));
+app.use(cors({
+ origin:`http://localhost:5173`,
+ credentials:true
+}));
 
 
 cloudinary.config({ 

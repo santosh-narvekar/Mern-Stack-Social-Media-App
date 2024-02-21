@@ -355,7 +355,7 @@ const getLoggedInUser = async(req,res,next)=>{
 const getUsersForSideBar = async(req,res,next)=>{
   try{
     const loggedInUserId = req.user._id;
-    const filteredUsers = await User.find({_id:{$ne:loggedInUserId}}).select('-password').select('-confirmationCode').select('-status');
+    const filteredUsers = await User.find({_id:{$ne:loggedInUserId}, status:'Active'}).select('-password').select('-confirmationCode').select('status');
      res.status(200).json(filteredUsers);
   }catch(err){
     console.log(err)
@@ -383,6 +383,5 @@ const getFollowing = async(req,res,next)=>{
     return res.status(500).json({message:"something went wrong!"})
   }
 }
-
 
 module.exports = { signup , login , followUnfollowUser , logOutUser , updateUser , updatePassword,getAllUsers,activateAccount,getOneUser,getLoggedInUser,getUsersForSideBar,getFollowers,getFollowing}

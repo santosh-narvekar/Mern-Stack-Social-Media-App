@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react";
-import { feedPosts, getSuggestedPosts, getTrendingTopics } from "../../features/postFeatures";
+import { feedPosts, getSuggestedPosts } from "../../features/postFeatures";
 import Post from "../components/Post";
 import TrendingTopics from "./TrendingTopics";
 import { FaFire } from "react-icons/fa6";
@@ -16,7 +16,7 @@ const FeedPosts = () => {
 
   return (
     <section className="mb-4">
-      <h1 className="sm:text-4xl text-2xl font-bold ml-4  ">FEED</h1>
+      <h1 className="sm:text-4xl text-2xl font-bold ml-4 mb-4 ">FEED</h1>
       <div className="flex gap-28">
       {
         postsLoading || !posts?

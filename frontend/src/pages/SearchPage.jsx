@@ -43,7 +43,7 @@ const SearchPage = () => {
      placeholder="Search" 
      className="input input-bordered md:w-96 w-80 md:ml-12 ml-0 max-w-full"
     />
-     <div className="overflow overflow-visible overflow-y-scroll md:ml-12 ml-2 md:w-96 max-w-full md:h-96 h-80 flex flex-col mt-8 
+     <div className="overflow  overflow-auto md:ml-12 ml-0 md:w-96 max-w-full md:h-96 h-80 flex flex-col mt-8 
      w-96
      ">
       {

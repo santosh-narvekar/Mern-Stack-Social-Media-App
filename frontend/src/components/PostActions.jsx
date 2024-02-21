@@ -2,7 +2,7 @@ import UpdateModal from './UpdateModal';
 import { FaRegTrashCan } from 'react-icons/fa6';
 import { TiPencil } from 'react-icons/ti';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost, getOnePost } from '../../features/postFeatures';
+import { deletePost, getOnePost, getTrendingTopics } from '../../features/postFeatures';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { handleChangeForPosts } from '../../utils/handleChangeForPosts';
@@ -16,9 +16,10 @@ const PostActions = ({postsButtonLoading,postId,postData,IdInParams,userId,data,
     
     if(res){
       try{
-       const response= await dispatch(deletePost(postId));
+       const response = await dispatch(deletePost(postId));
        if(response.type===`/deletePost/fulfilled`){
         window.history.back()
+        dispatch(getTrendingTopics());
        }
       }catch(err){
         //
@@ -31,11 +32,11 @@ return (
       {
         !IdInParams?
         <Link to={`/profile/${userId}/post/${postId}`}>
-        <button className='w-28 h-10 justify-end bg-base-300 rounded-lg px-2 border-white'>
+        <button className='w-28 h-10  justify-end bg-base-300 rounded-lg px-2 border-white '>
           <p
           className=" font-bold" 
           >
-          Visit Post
+          Modify Post
           </p>
         </button>
             </Link>

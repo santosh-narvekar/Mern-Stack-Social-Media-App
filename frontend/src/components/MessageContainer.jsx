@@ -22,7 +22,7 @@ const MessageContainer = () => {
   },[id]);
   
   return (
-    <div className="md:min-w-[450px] flex flex-col overflow-auto sm:ml-6 h-full    md:ml-0 ">
+    <div className="md:min-w-[450px] flex flex-col overflow-auto sm:ml-2 h-5/6 sm:h-full   md:ml-0 ">
       {
         !id?<NoChatSelected/>:
         <>
@@ -46,7 +46,7 @@ export default MessageContainer
 const NoChatSelected = ()=>{
   const {username} = useSelector(state=>state.loggedIn.loggedInUser);
   return (
-    <div className="flex items-center justify-center w-full h-full">
+    <div className="flex items-center justify-center w-full h-3/4">
       <div className="px-4 text-center sm:text-lg md:text-xl text-gray-200 font-semibold flex flex-col items-center gap-2">
         <p>welcome,{username}</p>
         <p>Select a message to start messaging</p>

@@ -8,20 +8,20 @@ import { likeUnlikePost } from '../../features/postFeatures'
 const SearchUserComponent = ({userProfile,username,_id,followers}) => {
   const dispatch = useDispatch();
   const {_id:loggedInUserId}=useSelector(state=>state.loggedIn.loggedInUser);
- 
- const {loggedInUser}=useSelector(state=>state.loggedIn)
+  const {likeButtonLoading}=useSelector(state=>state.post);
+ const {loggedInUser,buttonLoading}=useSelector(state=>state.loggedIn)
   const {postId,id}=useParams()
  
   const handleLike = (e)=>{
     e.preventDefault();
-    dispatch(getLoggedInUser(_id));
+    //dispatch(getLoggedInUser(_id));
     dispatch(likeUnlikePost(postId))
   }
 
   const handleFollowers=(e)=>{
     e.preventDefault();
     const userId=_id
-    dispatch(getLoggedInUser(_id));
+    //dispatch(getLoggedInUser(_id));
     dispatch(followUnfollowUser(userId));
   }
   return (
@@ -41,16 +41,18 @@ const SearchUserComponent = ({userProfile,username,_id,followers}) => {
       </div>
     {
      postId   && loggedInUserId === _id?
-    <button className='w-28 h-10 justify-end bg-base-300 rounded-lg mx-4 px-4'
+    <button className='w-28 h-10 justify-end bg-base-300 rounded-lg mx-4 px-4 '
     onClick={handleLike}
+    disabled={likeButtonLoading}
     >
       <p className=' font-bold  '>
         Remove
       </p>
       </button>
       :loggedInUserId === _id?<></>:
-    <button className='w-28 h-10 bg-base-300 rounded-lg mx-4 px-4'
+    <button className='w-28 h-10 bg-blue-400 rounded-lg mx-4 px-4'
     onClick={handleFollowers}
+    disabled={buttonLoading}
     >
       <p className='font-bold'>
       {loggedInUser?.following?.includes(_id)?'following':'follow'}
@@ -58,7 +60,6 @@ const SearchUserComponent = ({userProfile,username,_id,followers}) => {
       </button>
     }
     </div>
-    <hr className='w-full'/>
     </Link>
   )
 }

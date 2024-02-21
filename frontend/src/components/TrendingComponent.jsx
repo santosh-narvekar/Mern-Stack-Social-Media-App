@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
-import TrendingTopics from "../pages/TrendingTopics"
 
-const TrendingComponent = ({trendName,postCount,curIndex}) => {
+const TrendingComponent = ({curIndex,trendName,NoOfPosts}) => {
 
   return (
     <div className='w-80 h-12 flex flex-col gap-6 mb-2    '>
@@ -14,11 +13,11 @@ const TrendingComponent = ({trendName,postCount,curIndex}) => {
           <div className="badge badge-primary badge-sm mt-2">{curIndex}</div>
         <div className='flex flex-col'>    
      
-     <Link to = {`/trending/${trendName?.split('').splice(1).join('')}`}>
+     <Link to = {`/trending/${trendName?.slice(1,)}`}>
         <p className='font-bold hover:cursor-pointer '>
           {trendName}</p>
      </Link>
-        <p>{postCount} tags</p>
+        <p>{NoOfPosts} posts</p>
         </div>
         </div>
       </div>

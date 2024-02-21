@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLoggedInUser } from "../../features/userFeatures";
 import { getTrendingTopics } from "../../features/postFeatures";
-
 const HomeLayout = () => {
   const {_id}=useSelector(state=>state.loggedIn.loggedInUser)
   const dispatch = useDispatch();

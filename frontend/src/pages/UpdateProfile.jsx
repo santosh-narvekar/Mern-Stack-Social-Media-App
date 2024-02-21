@@ -41,14 +41,14 @@ const UpdateProfile = () => {
   }
 
   return (
-    <div className="xl:w-96 " >
-      <Form className="rounded  w-96    pt-6 sm:border-4 ">
+    <div className="xl:w-96 w-96" >
+      <Form className="rounded  sm:w-96 w-96 sm:ml-0 ml-0  sm:pt-6 sm:border-4   ">
           <div  className="mb-6 flex bg-base-100 justify-center items-center align-top gap-4  my-2 mx-2 ">
      {
       data.photo.startsWith('data:image/jpeg') || data.photo.startsWith('data:image/png')  || data.photo
       ?
       <img src={data.photo} className="w-28 h-28 rounded-full " alt='userProfilePage'/>
-      :<FaCircleUser  className="btn-neutral w-28 h-28 rounded-full avatar"
+      :<FaCircleUser  className="btn-neutral sm:w-28 sm:h-28 w-28 h-28 sm:ml-0 ml-2  rounded-full avatar"
        />
 
       }

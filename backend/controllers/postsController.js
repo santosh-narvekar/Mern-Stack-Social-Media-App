@@ -1,3 +1,4 @@
+const e = require("express");
 const { Post } = require("../models/postsModel");
 const { Reply } = require("../models/replyModel");
 const User = require("../models/usersModel");
@@ -241,51 +242,6 @@ const getOnePost= async(req,res,next)=>{
   }
 }
 
-const trendingTopics = async(req,res,next)=>{
-  try{
-    
-    const posts = await Post.find({postContent:{$regex:"#"}})
-    let content=[]
-    
-    posts.forEach((post)=>{
-        content.push(post?.postContent.split(' ').filter((el)=>{
-        const newEl=el.slice(1);
-        if(el.startsWith('#') && el.length > 1 && !newEl.includes('#') ) return el.toLowerCase();
-      }));
-    });
-
-    content = content.flat();
-    content = content.sort();
-    let contentSet = new Set(content);
-    let newContent=[]
-
-    contentSet.forEach((word)=>{
-      let start = content.indexOf(word);
-      let endIndex = content.lastIndexOf(word);
-      let count = endIndex-start+1;
-      newContent.push({'word':word,'count':count})
-    })
-    newContent.sort((a,b)=>a.count < b.count ? 1:-1);
-    newContent=newContent.splice(0,10)
-    return res.status(200).json(newContent);
-  }catch(err){
-    return res.status(500).json({message:"something went wrong"});
-  }
-}
-
-const getPostsForTrending = async(req,res,next)=>{
-  try{
-    const {trendingTopic} = req.params; // twitter,facebook,amazon 
-    const posts = await Post.find({postContent:{$regex:'#'+trendingTopic.toLowerCase()}}).sort({createdAt:-1});
-    if(posts.length==0){
-      return res.status(400).json("no trend for that topic");
-    }
-    return res.status(200).json(posts);
-  }catch(err){
-    console.log(err)
-    return res.status(500).json('something went wrong!');
-  }
-};
 
 const getLikedUsers = async(req,res,next)=>{
   try{
@@ -312,6 +268,56 @@ const suggestedPosts = async(req,res,next)=>{
   }
 }
 
+
+
+const getTrendingTopics = async(req,res,next)=>{
+  try{
+    const posts = await Post.find({postContent:{$regex:'#'}});   
+    const filteredTags=[]
+    
+    const tags = posts.map(async post=>{
+      const toLowerCaseArr=post.postContent.toLowerCase();
+      
+      const arr = toLowerCaseArr.split(' ').filter(el=>{
+        const newEl = el.slice(1,);
+        if(el.startsWith('#') && el.length>1 && !newEl.includes('#')){
+          filteredTags.push(el)
+          return el
+        } 
+      })
+
+      const setArr = new Set(arr);
+      const ArrayTags = [...setArr]
+      console.log(ArrayTags)
+      await  Post.updateOne({_id:post._id},{hashTags:ArrayTags})
+    })
+
+    let trendingHashtags = await Post.aggregate([
+      {$unwind:'$hashTags'},
+      {$group:{_id:'$hashTags',count:{$sum:1}}},
+      {$sort:{count:-1}},
+      {$limit:10}
+    ])
+    return res.status(200).json(trendingHashtags);
+  }catch(err){
+
+    return res.status(500).json({message:"something went wrong"});
+  }
+}
+
+const getThatTrendingTagPosts=async(req,res,next)=>{
+  try{
+   const {trend} = req.params;
+   const caseInsensitiveRegex = new RegExp(trend,'i');
+   console.log(caseInsensitiveRegex)
+   const posts = await Post.find({hashTags:caseInsensitiveRegex})
+   console.log(posts)
+   return res.status(200).json(posts)
+  }catch(err){
+    return res.status(500).json({message:'something went wrong'})
+  }
+}
+
 module.exports = {createPosts,
   likeUnlikePost,
   getAllPosts,
@@ -321,8 +327,8 @@ module.exports = {createPosts,
   getFeedPosts,
   getPostsForThatUser,
   getOnePost,
-  trendingTopics,
-  getPostsForTrending,
   suggestedPosts,
   getLikedUsers,
+  getTrendingTopics,
+  getThatTrendingTagPosts
 }

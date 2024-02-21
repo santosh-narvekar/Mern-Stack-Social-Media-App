@@ -14,6 +14,7 @@ const Messages = () => {
       lastMessageRef?.current?.scrollIntoView({behaviour:"smooth"})
     },150)
   },[messages])
+  
   return (
     <div className='px-4 flex-1 overflow-auto'>
       

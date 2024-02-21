@@ -73,10 +73,10 @@ export const deletePost  = createAsyncThunk('/deletePost',async(postId,thunkAPI)
 })
 
 export const likeUnlikePost = createAsyncThunk('/likeUnlikePost',async(postId,thunkAPI)=>{
+  if(!postId) return 
   try{
-  if(!postId) return;
-  const post = await postsFetch.post(`/posts/likeUnlikePost/${postId}`);
-  return {post,postId};
+    const post = await postsFetch.post(`/posts/likeUnlikePost/${postId}`);
+    return {post,postId};
   }catch(err){
     return thunkAPI.rejectWithValue(err.response.data.message);
   }
@@ -112,23 +112,7 @@ export const deletePostComment = createAsyncThunk('/deletePostComment',async(com
   }
 })
 
-export const getTrendingTopics = createAsyncThunk('/trendingTopics',async(_,thunkAPI)=>{
-  try{
-    const trendingTopics = await postsFetch.get('/posts/trendingTopics');
-    return trendingTopics
-  }catch(err){
-    return thunkAPI.rejectWithValue(err.response.data.message);
-  }
-})
 
-export const getTrendingPost = createAsyncThunk('/trendingTopic',async(trendingTopic,thunkAPI)=>{
-  try{
-    const trendingPosts=await postsFetch.get(`/posts/getPosts/${trendingTopic}`);
-    return trendingPosts
-  }catch(err){
-    return thunkAPI.rejectWithValue(err.response.data.message);
-  }
-})
 
 export const likePostComment = createAsyncThunk('/likePostComment',async(commentId,thunkAPI)=>{
   try{
@@ -163,6 +147,23 @@ export const getLikedPosts = createAsyncThunk('/getLikedPosts',async(postId,thun
   }
 })
 
+export const getTrendingTopics = createAsyncThunk('/getTrendingTopics',async(_,thunkAPI)=>{
+  try{
+    const res = await postsFetch.get(`/posts/trendingTopics`);
+    return res;
+  }catch(err){
+    return thunkAPI.rejectWithValue(err.response.data.message)
+  }
+});
+
+export const getTrendingPagePosts = createAsyncThunk('/getTrendingPagePosts',async(trendingTopic,thunkAPI)=>{
+  try{
+  const res=await postsFetch.get(`/posts/trendingTopics/${trendingTopic}`);
+  return res
+  }catch(err){
+    return thunkAPI.rejectWithValue(err.response.data.message);
+  }
+});
 const state={
   postData:{},
   posts:[],
@@ -289,22 +290,6 @@ const postSlice = createSlice({
     }).addCase(deletePostComment.rejected,(state,action)=>{
       //state.commentLoading = false
       toast.error('something went wrong!')
-    }).addCase(getTrendingTopics.pending,(state,action)=>{
-      state.trendingTopicsLoad=true
-    }).addCase(getTrendingTopics.fulfilled,(state,action)=>{
-      state.trendingTopicsLoad=false
-      state.trendingTopics=action.payload.data;
-    }).addCase(getTrendingTopics.rejected,(state,action)=>{
-      state.trendingTopicsLoad=false;
-      toast.error('something went wrong')
-    }).addCase(getTrendingPost.pending,(state,action)=>{
-       state.postsLoading=true
-    }).addCase(getTrendingPost.fulfilled,(state,action)=>{
-       state.postsLoading=false;
-       state.posts = action.payload.data
-    }).addCase(getTrendingPost.rejected,(state,action)=>{
-      state.postsLoading=false;
-      toast.error(action.payload)
     }).addCase(likePostComment.pending,(state,action)=>{
       state.likeButtonLoading=true;
     }).addCase(likePostComment.fulfilled,(state,action)=>{
@@ -333,6 +318,23 @@ const postSlice = createSlice({
 
     }).addCase(getLikedPosts.rejected,(state,action)=>{
       state.postsLoading = false
+    }).addCase(getTrendingTopics.pending,(state,action)=>{
+      state.trendingTopicsLoad=true
+    }).addCase(getTrendingTopics.fulfilled,(state,action)=>{
+      state.trendingTopicsLoad=false;
+      console.log(action.payload.data)
+      state.trendingTopics=action.payload.data;
+    }).addCase(getTrendingTopics.rejected,(state,action)=>{
+      state.trendingTopicsLoad = false
+      console.log(action.payload)
+    }).addCase(getTrendingPagePosts.pending,(state,action)=>{
+      state.postsLoading = true;
+    }).addCase(getTrendingPagePosts.fulfilled,(state,action)=>{
+      state.postsLoading = false;
+      state.posts = action.payload.data;
+    }).addCase(getTrendingPagePosts.rejected,(state,action)=>{
+      state.postsLoading=false;
+      toast.error(action.payload);
     })
   }
 

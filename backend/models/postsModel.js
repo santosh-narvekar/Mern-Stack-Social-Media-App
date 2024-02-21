@@ -18,6 +18,10 @@ const postsSchema = mongoose.Schema({
     type:[mongoose.Schema.Types.ObjectId],
     ref:'User'
   },
+  hashTags:{
+    type:[String],
+    default:[]
+  },
   replies:[],
   user:{}
 },{

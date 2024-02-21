@@ -15,8 +15,7 @@ const LikesPage = () => {
   },[postId])
   
   return (
-    <div >
-      
+    <section className="h-full">
       {
         postsLoading?<div className='flex w-96 h-96 justify-center items-center'>
           <span className='loading loading-ring loadidng-lg'></span>
@@ -37,7 +36,7 @@ const LikesPage = () => {
       }
       
     <TrendingTopics />
-    </div>
+    </section>
   )
 }
 

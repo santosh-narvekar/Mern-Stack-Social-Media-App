@@ -1,6 +1,4 @@
-import { useContext, useState } from "react"
-import startConversation from "../../../hooks/startConversation";
-import { useSelector } from "react-redux";
+import { useContext } from "react"
 import { Link } from "react-router-dom";
 import { SocketContext } from "../../context/SocketContext";
 

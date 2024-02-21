@@ -13,7 +13,7 @@ const Conversations = ({filteredUsers}) => {
   },[]);
   
   return (
-    <div className="py-2 flex flex-col overflow-auto">
+    <div className="py-2 flex flex-col overflow-auto h-28 md:h-full ">
       {
         chatsLoading?<span className="loading loading-ring loading-lg"></span>
        : filteredUsers?.map((chatUser,i)=><Conversation key={chatUser._id} photo={chatUser?.photo} username={chatUser?.username} CurIndex={i}
