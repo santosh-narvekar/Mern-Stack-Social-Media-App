@@ -33,13 +33,9 @@ const ReplyComponent = ({username,profilePhoto,userCommentText,userId,postId,rep
     const deleteEl =  document.getElementById(`deletePostComment${curIndex+1}`);
     if(res){
       deleteEl.disabled = true; 
-      const response = await  dispatch(deletePostComment(replyId));
-      if(response.type=='/deletePostComment/fulfilled'){
-      deleteEl.disabled = false 
-      }
-      
+      const response = await dispatch(deletePostComment(replyId));  
       if(response.type=='/deletePostComment/rejected'){
-      deleteEl.disabled = false 
+         deleteEl.disabled = false 
       }
     }
   }
