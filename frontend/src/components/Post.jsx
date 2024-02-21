@@ -56,7 +56,7 @@ const Post = ({postId,postData,curIndex}) => {
   }
   return (
     <>
-      <div className="relative max-h-4/5  sm:w-96 w-11/12 mx-4  flex flex-col border-gray-200  border-2 p-4 mb-4 sm:p-6  rounded-lg">
+      <div className="relative max-h-4/5  sm:w-96 w-11/12 mx-4  flex flex-col border-gray-200  border-2 p-6 mb-4 sm:p-6  rounded-lg">
        <div className="flex items-center justify-between mb-2">
           <div className="flex flex-row gap-2 items-center">
           {
