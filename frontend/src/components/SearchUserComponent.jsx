@@ -50,7 +50,7 @@ const SearchUserComponent = ({userProfile,username,_id,followers}) => {
       </p>
       </button>
       :loggedInUserId === _id?<></>:
-    <button className='w-28 h-10 bg-blue-400 rounded-lg mx-4 px-4'
+    <button className='w-28 h-10 bg-base-300 rounded-lg mx-4 px-4'
     onClick={handleFollowers}
     disabled={buttonLoading}
     >
