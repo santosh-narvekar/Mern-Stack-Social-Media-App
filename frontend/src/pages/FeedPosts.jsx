@@ -34,8 +34,10 @@ const FeedPosts = () => {
         </p>
           </>
           :
-          posts.map((post)=>{
-            return <Post key={post._id} postData={post} postId={post._id} />
+          posts.map((post,i)=>{
+            return <Post key={post._id} postData={post}
+                     curIndex={i}
+                     postId={post._id} />
           })
       }
     </div>
