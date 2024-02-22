@@ -112,8 +112,7 @@ const Post = ({postId,postData,curIndex}) => {
         id={`likeEffect${curIndex+1}`}
         className="absolute left-1/2 top-1/2 text-6xl md:text-8xl 
             opacity-0 transition duration-500 ease-in-out transform -translate-x-1/2 -translate-y-1/2 scale-x-150 scale-y-150
-            "><FaHeart fill ={
-              postData.likes && postData?.likes.includes(loggedInUserId)?'#ff314a':'#ffffff'}/>
+            "><FaHeart fill ={'#ff314a'}/>
             </div>
 </div>
 {
