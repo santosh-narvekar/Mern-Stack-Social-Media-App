@@ -7,7 +7,7 @@ const TrendingTopics = () => {
   const {TrendingTopicsLoad,trendingTopics}=useSelector(state=>state.post)
   
   return (
-    <section className='xl:visible invisible fixed top-20 left-2/3   border-2 border-gray-500 overflow-visible h-5/6 overflow-y-scroll
+    <section className='xl:visible invisible fixed top-20 left-2/3   border-2 border-gray-500 overflow-visible h-5/6 overflow-auto
     '>
       <p className='text-2xl font-bold mb-4 mt-2 ml-4 z-10'>Trending#</p>
        {
