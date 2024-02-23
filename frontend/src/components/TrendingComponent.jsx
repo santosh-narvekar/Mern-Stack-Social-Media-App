@@ -10,7 +10,6 @@ const TrendingComponent = ({curIndex,trendName,NoOfPosts}) => {
   <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
 </svg>
 
-          <div className="badge badge-primary badge-sm mt-2">{curIndex}</div>
         <div className='flex flex-col'>    
      
      <Link to = {`/trending/${trendName?.slice(1,)}`}>
