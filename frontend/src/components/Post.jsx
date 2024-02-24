@@ -96,7 +96,11 @@ const Post = ({postId,postData,curIndex}) => {
       onDoubleClick={handleLikeByPost}
       >
       {
-        postData.resource.includes('/video/upload')?
+        !postData.resource?
+        <div className="h-64 w-2/3 flex items-center justify-center">
+        <span className = "loading loading-spinner"></span>
+          </div>
+        : postData.resource.includes('/video/upload')?
         <video  className="md:max-w-2/3 max-w-screen md:h-64 rounded-t-lg mt-2   "
         controls playsInline={true} 
         id={`video-container${curIndex+1}`}
