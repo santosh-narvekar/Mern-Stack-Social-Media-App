@@ -116,10 +116,10 @@ const Actions = ({postData,postId,loggedInUserId,curIndex}) => {
          divisionResult < 24 && divisionResult !== 0 &&  ` ${divisionResult} hours ago` 
         }
         {
-          divisionResult >= 24 && ` ${curDate.getDate()-postCreatedDate.getDate()} days ago` 
+          divisionResult >= 24 && divisionResult < 168` ${curDate.getDate()-postCreatedDate.getDate()} days ago` 
         }
         {
-          divisionResult >= 168 && `more than one week ago`
+          divisionResult >= 168 && `posted more than one week ago`
         }
     </div>
   
