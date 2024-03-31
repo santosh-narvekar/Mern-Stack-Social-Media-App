@@ -20,7 +20,7 @@ const signup =  async (req,res,next)=>{
       return res.status(400).json({message:"the name you provided won't be accepted"})
      }
      
-     if(username.length > 30 || username.length < 3){
+     if(username.length > 15 || username.length < 3){
       return res.status(400).json({message:"username can be between 3 to 30 characters"})
      }
 
