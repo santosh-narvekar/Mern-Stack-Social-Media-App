@@ -1,6 +1,6 @@
 **MERN STACK SOCIAL-MEDIA APPLICATION**
 
-![Home Page](https://drive.google.com/uc?export=view&id=1bBrvKmlZJ-1BovfF_LNvvkfxoAXQtZGxB2P7Gdx4kJt)
+![Home Page](https://drive.google.com/uc?export=view&id=1BovfF_LNvvkfxoAXQtZGxB2P7Gdx4kJt)
 
 **TECH STACK USED**
 - DaisyUI For Designing(with tailwind css)
