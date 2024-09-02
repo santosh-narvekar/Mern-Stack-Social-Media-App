@@ -27,8 +27,11 @@
 - Auto Video Player/Pause on Scroll(Intersection Api)
 - Instagram Double Like Effect
 
+
 **SKILLS EARNED**
 This project helped me to solidify my skills in the mern stack. Learned to handle and manage backend
 and frontend effectively
+
+- Live Project Deployed Url: https://sapp-social-media-app.onrender.com/
 
 **FEEL FREE TO CONTRIBUTE TO THIS PROJECT IF YOU FOUND ANY BUGS**
