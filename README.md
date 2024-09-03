@@ -19,12 +19,13 @@
 - Signing and logging in users
 - Update User Profile/Password
 - Create/Update/Delete Post
+- Get all Posts/Users 
 - Follow/Unfollow Users
 - Create/Delete Comment
 - Like/Unlike Posts
 - Real time Chatting
 - Trending Posts Section
-- Auto Video Player/Pause on Scroll(Intersection Api)
+- Auto Video Player/Pause on Scroll(Intersection observer  Api)
 - Instagram Double Like Effect
 
 
