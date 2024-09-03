@@ -9,7 +9,6 @@
 - Redux for State Management
 - NodeJs/ExpressJs for Api Handling
 - JWT For Authentication
-- RestFul API
 - nodemailer for verifying Emails
 - cloudinary for image uploads
 - SocketIo For Real Time Communication
