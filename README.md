@@ -4,8 +4,8 @@
 
 **TECH STACK USED**
 - DaisyUI For Designing(with tailwind css)
-- ReactJs for Front-end
-- axios library for consuming web api
+- ReactJs and Javascript for Front-end Code
+- axios library for consuming web api 
 - Redux for State Management
 - NodeJs/ExpressJs for Api Handling
 - JWT For Authentication
